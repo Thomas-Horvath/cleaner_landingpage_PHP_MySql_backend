@@ -1,0 +1,32 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+storage/logs/
+storage/*.log
+
+# Local editor / OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# PHP dependencies
+vendor/
+
+# Local backups / dumps
+*.bak
+*.tmp
+*.dump
+*.sql.zip
+*.sql.gz
+
+# Keep the main development SQL init file versioned,
+# but exclude the Nethely-specific import helper.
+mysql/nethely-import.sql
+/docs
+README-me.md

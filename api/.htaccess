@@ -1,0 +1,2 @@
+# Az API mappát publikusnak hagyjuk, de a könyvtárlistázást kikapcsoljuk.
+Options -Indexes

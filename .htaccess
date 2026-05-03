@@ -1,0 +1,10 @@
+# Alap Apache beállítások a cleaner backendhez.
+Options -Indexes
+RewriteEngine On
+
+# A gyökérben ne lehessen érzékeny fájlokat közvetlenül megnyitni.
+<FilesMatch "^(\.env|README\.md)$">
+    Require all denied
+</FilesMatch>
+
+# A későbbi, szebb API útvonalakhoz itt bővíthető a rewrite logika.

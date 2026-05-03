@@ -1,0 +1,3 @@
+# A storage mappa nem publikus.
+Options -Indexes
+Require all denied

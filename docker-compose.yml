@@ -1,0 +1,42 @@
+services:
+  php:
+    build: ./docker/php
+    container_name: cleaner_php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: cleaner_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: cleaner_booking
+      MYSQL_USER: cleaner_user
+      MYSQL_PASSWORD: cleaner_pass
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: cleaner_phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: cleaner_user
+      PMA_PASSWORD: cleaner_pass
+    ports:
+      - "8081:80"
+
+volumes:
+  mysql_data:
+
